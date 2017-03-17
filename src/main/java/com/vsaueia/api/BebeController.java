@@ -19,7 +19,8 @@ public class BebeController {
     private ConsultaBebe consultaBebe;
 
     @Autowired
-    public BebeController(CadastrarBebe cadastrarBebe, ConsultaBebe consultaBebe) {
+    public BebeController(CadastrarBebe cadastrarBebe,
+                          ConsultaBebe consultaBebe) {
         this.cadastrarBebe = cadastrarBebe;
         this.consultaBebe = consultaBebe;
     }
@@ -38,7 +39,7 @@ public class BebeController {
         }
         BebeDto bebeSalvo = cadastrarBebe.inserir(bebeDto);
         URI localizacao = ServletUriComponentsBuilder
-                .fromCurrentRequest().path("/{id}")
+                .fromCurrentRequest().path("/{nome}")
                 .buildAndExpand(bebeSalvo.id).toUri();
 
         return ResponseEntity.created(localizacao).build();
